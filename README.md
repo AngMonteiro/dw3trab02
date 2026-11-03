@@ -1,4 +1,4 @@
-Trabalho2 DW3
+Trabalho2 DW3.
 Alunos: Angelo Fenti e Kawam Oliveira
 
 # DW3 - 2º Trabalho - ERP Hospitalar (Módulo Saúde)
