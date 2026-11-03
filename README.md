@@ -1,3 +1,6 @@
+Trabalho2 DW3
+Alunos: Angelo Fenti e Kawam Oliveira
+
 # DW3 - 2º Trabalho - ERP Hospitalar (Módulo Saúde)
 
 CRUD de **Especialidades** e **Médicos** (relacionamento 1:N — uma especialidade possui vários médicos),
