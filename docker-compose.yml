@@ -1,0 +1,49 @@
+services:
+  db:
+    image: postgres:16
+    container_name: dw3trab02-db
+    environment:
+      POSTGRES_DB: dw3trab02
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postdba
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - dados_postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d dw3trab02"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./backend
+    container_name: dw3trab02-backend
+    environment:
+      SECRET_API: "9as1%12#xz0#@"
+      DB_NAME: dw3trab02
+      DB_USER: postgres
+      DB_PASS: postdba
+      DB_HOST: db
+      DB_PORT: 5432
+    ports:
+      - "40000:40000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    container_name: dw3trab02-frontend
+    environment:
+      PORT: 40100
+      # Endereço do back-end visto pelo navegador do usuário
+      SERVIDOR_DW3: "http://localhost:40000"
+    ports:
+      - "40100:40100"
+    depends_on:
+      - backend
+
+volumes:
+  dados_postgres:

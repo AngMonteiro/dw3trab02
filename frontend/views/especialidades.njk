@@ -1,0 +1,58 @@
+{% extends "layout.njk" %}
+{% block content %}
+<header class="page-header">
+  <p class="page-kicker text-primary fw-semibold mb-2">Cadastros</p>
+  <h1 class="h3 fw-bold mb-0">Especialidades</h1>
+</header>
+
+<div id="mensagem" class="alert d-none" role="alert"></div>
+
+<div class="row g-4">
+  <div class="col-lg-4">
+    <div class="card border-0 shadow-sm page-card">
+      <div class="card-body p-4">
+        <h2 class="h5 fw-semibold mb-3" id="tituloForm">Nova especialidade</h2>
+        <form id="formEspecialidade">
+          <input type="hidden" id="especialidadeid">
+          <div class="mb-3">
+            <label class="form-label" for="codigo">Código</label>
+            <input class="form-control" id="codigo" maxlength="10" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="descricao">Descrição</label>
+            <input class="form-control" id="descricao" maxlength="60" required>
+          </div>
+          <div class="d-flex gap-2">
+            <button class="btn btn-primary" type="submit">Salvar</button>
+            <button class="btn btn-outline-secondary" type="button" id="btnCancelar">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-8">
+    <div class="card border-0 shadow-sm page-card">
+      <div class="card-body p-4">
+        <h2 class="h5 fw-semibold mb-3">Especialidades cadastradas</h2>
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Código</th>
+                <th>Descrição</th>
+                <th class="text-end">Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tabelaEspecialidades"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/apps/especialidades/vwEspecialidades.js"></script>
+{% endblock %}

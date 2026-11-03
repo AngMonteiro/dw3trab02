@@ -1,0 +1,47 @@
+### Necessário para pegar o token
+# @name loginAutenticado
+POST http://localhost:40000/Login HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "admin"
+}
+
+###
+@accessToken = {{loginAutenticado.response.body.$.token}}
+
+### Buscar todas as especialidades
+GET http://localhost:40000/getAllEspecialidades HTTP/1.1
+Authorization: Bearer {{accessToken}}
+
+### Buscar especialidade por ID
+GET http://localhost:40000/getEspecialidadeByID/1 HTTP/1.1
+Authorization: Bearer {{accessToken}}
+
+### Inserir especialidade
+POST http://localhost:40000/insertEspecialidade HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "codigo": "DERM",
+    "descricao": "Dermatologia"
+}
+
+### Atualizar especialidade
+PUT http://localhost:40000/updateEspecialidade/1 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "codigo": "CARD",
+    "descricao": "Cardiologia Clínica"
+}
+
+### Excluir (soft delete) especialidade
+DELETE http://localhost:40000/deleteEspecialidade/4 HTTP/1.1
+Authorization: Bearer {{accessToken}}
+
+### Sem token (deve retornar 401)
+GET http://localhost:40000/getAllEspecialidades HTTP/1.1

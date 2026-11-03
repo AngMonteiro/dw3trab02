@@ -1,0 +1,154 @@
+/* Paleta de cores: rosa (principal) e amarelo (destaque) */
+:root {
+  --rosa: #e84393;
+  --rosa-escuro: #c2185b;
+  --rosa-claro: #fde4f0;
+  --amarelo: #ffd23f;
+  --amarelo-claro: #fff6d6;
+  --texto: #3b2a35;
+
+  /* Faz o Bootstrap usar o rosa como cor "primary" */
+  --bs-primary: #e84393;
+  --bs-primary-rgb: 232, 67, 147;
+  --bs-link-color: #c2185b;
+  --bs-link-hover-color: #a0124a;
+}
+
+body {
+  background: #fff9fb;
+  color: var(--texto);
+}
+
+a {
+  text-decoration: none;
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.app-main {
+  min-height: calc(100vh - 56px);
+}
+
+/* Barra de navegação */
+.app-navbar {
+  min-height: 56px;
+  background: linear-gradient(90deg, var(--rosa-escuro), var(--rosa));
+  border-bottom: 4px solid var(--amarelo);
+}
+
+.app-navbar .navbar-brand {
+  color: #fff;
+}
+
+.app-navbar .navbar-brand::before {
+  content: "✚ ";
+  color: var(--amarelo);
+}
+
+.app-navbar .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: 0.5rem;
+  padding-left: 0.75rem !important;
+  padding-right: 0.75rem !important;
+}
+
+.app-navbar .nav-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.app-navbar .nav-link.active {
+  color: var(--texto) !important;
+  background: var(--amarelo);
+  font-weight: 600;
+}
+
+/* Tela de login */
+/* O fundo vai no body para cobrir a tela inteira (o login fica dentro do .container) */
+body:has(.login-screen) {
+  background: linear-gradient(135deg, var(--amarelo-claro), var(--rosa-claro)) fixed;
+}
+
+.login-screen {
+  min-height: calc(100vh - 6rem);
+  padding: 3rem 1rem;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 1rem;
+  border-top: 6px solid var(--rosa) !important;
+}
+
+/* Cards */
+.page-card {
+  border-radius: 1rem;
+  border-top: 5px solid var(--amarelo) !important;
+}
+
+.page-header {
+  margin-bottom: 1.5rem;
+}
+
+.page-kicker {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.text-primary {
+  color: var(--rosa) !important;
+}
+
+/* Botões */
+.btn-primary {
+  --bs-btn-bg: var(--rosa);
+  --bs-btn-border-color: var(--rosa);
+  --bs-btn-hover-bg: var(--rosa-escuro);
+  --bs-btn-hover-border-color: var(--rosa-escuro);
+  --bs-btn-active-bg: var(--rosa-escuro);
+  --bs-btn-active-border-color: var(--rosa-escuro);
+  --bs-btn-disabled-bg: var(--rosa);
+  --bs-btn-disabled-border-color: var(--rosa);
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--rosa-escuro);
+  --bs-btn-border-color: var(--rosa);
+  --bs-btn-hover-bg: var(--rosa);
+  --bs-btn-hover-border-color: var(--rosa);
+  --bs-btn-active-bg: var(--rosa-escuro);
+  --bs-btn-active-border-color: var(--rosa-escuro);
+}
+
+.btn-outline-secondary {
+  --bs-btn-color: #8a6d00;
+  --bs-btn-border-color: var(--amarelo);
+  --bs-btn-hover-color: var(--texto);
+  --bs-btn-hover-bg: var(--amarelo);
+  --bs-btn-hover-border-color: var(--amarelo);
+  --bs-btn-active-color: var(--texto);
+  --bs-btn-active-bg: var(--amarelo);
+  --bs-btn-active-border-color: var(--amarelo);
+}
+
+/* Campos de formulário */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--rosa);
+  box-shadow: 0 0 0 0.25rem rgba(232, 67, 147, 0.2);
+}
+
+/* Tabelas */
+.table thead th {
+  background: var(--amarelo);
+  color: var(--texto);
+  border-bottom: 0;
+}
+
+.table-hover > tbody > tr:hover > * {
+  --bs-table-hover-bg: var(--rosa-claro);
+}

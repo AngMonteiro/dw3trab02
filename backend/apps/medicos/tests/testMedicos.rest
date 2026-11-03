@@ -1,0 +1,50 @@
+### Necessário para pegar o token
+# @name loginAutenticado
+POST http://localhost:40000/Login HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "admin"
+}
+
+###
+@accessToken = {{loginAutenticado.response.body.$.token}}
+
+### Buscar todos os médicos
+GET http://localhost:40000/getAllMedicos HTTP/1.1
+Authorization: Bearer {{accessToken}}
+
+### Buscar médico por ID
+GET http://localhost:40000/getMedicoByID/1 HTTP/1.1
+Authorization: Bearer {{accessToken}}
+
+### Inserir médico
+POST http://localhost:40000/insertMedico HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "crm": "CRM-SP 111222",
+    "nome": "Mariana Costa",
+    "salario": 21000.75,
+    "dataadmissao": "2024-02-15",
+    "especialidadeid": 3
+}
+
+### Atualizar médico
+PUT http://localhost:40000/updateMedico/1 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "crm": "CRM-SP 123456",
+    "nome": "Ana Paula Souza Ramos",
+    "salario": 19000.00,
+    "dataadmissao": "2020-03-10",
+    "especialidadeid": 1
+}
+
+### Excluir (soft delete) médico
+DELETE http://localhost:40000/deleteMedico/3 HTTP/1.1
+Authorization: Bearer {{accessToken}}

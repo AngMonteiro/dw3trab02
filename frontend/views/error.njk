@@ -1,0 +1,10 @@
+{% extends "layout.njk" %}
+{% block content %}
+<div class="card border-0 shadow-sm page-card">
+  <div class="card-body p-4">
+    <h1 class="h3 fw-bold">Erro {{ status }}</h1>
+    <p class="text-secondary">{{ message }}</p>
+    <a class="btn btn-primary" href="/home">Voltar ao início</a>
+  </div>
+</div>
+{% endblock %}

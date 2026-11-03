@@ -1,0 +1,33 @@
+{% extends "layout.njk" %}
+{% block content %}
+<header class="page-header">
+  <p class="page-kicker text-primary fw-semibold mb-2">Módulo Saúde</p>
+  <h1 class="display-6 fw-bold mb-2">Painel principal</h1>
+  <p class="text-secondary mb-0">Olá, <strong id="nomeUsuario"></strong>. Escolha um cadastro abaixo ou use o menu superior.</p>
+</header>
+<div class="row g-4">
+  <div class="col-md-6">
+    <div class="card border-0 shadow-sm page-card h-100">
+      <div class="card-body p-4">
+        <h2 class="h5 fw-semibold">Especialidades</h2>
+        <p class="text-secondary">Cadastro das especialidades médicas do hospital.</p>
+        <a class="btn btn-primary" href="/especialidades">Abrir especialidades</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card border-0 shadow-sm page-card h-100">
+      <div class="card-body p-4">
+        <h2 class="h5 fw-semibold">Médicos</h2>
+        <p class="text-secondary">Cadastro dos médicos e da especialidade de cada um.</p>
+        <a class="btn btn-primary" href="/medicos">Abrir médicos</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+  document.getElementById('nomeUsuario').textContent = localStorage.getItem('username') || '';
+</script>
+{% endblock %}
